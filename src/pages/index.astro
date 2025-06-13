@@ -1,11 +1,15 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Nav from "@/components/Nav/Nav.astro";
+import Layout from "../layouts/Layout.astro";
+import IndexPage from "@components/IndexPage";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Bodega">
+  <IndexPage client:only="react" />
+  <main class="relative bg-[#070030] h-screen">
+    <Nav />
+    <picture class="flex absolute bottom-0 justify-center items-end">
+      <img src="../../public/img/pageMain.jpg" class="w-[75%]" alt="Imagen de una computadora">
+    </picture>
+  </main>
 </Layout>

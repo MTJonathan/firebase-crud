@@ -1,0 +1,8 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Login_Register from "../components/Login_Register";
+---
+
+<Layout title={'Registrarse'}>
+    <Login_Register title={'Registrarse'} client:only="react"/>
+</Layout>

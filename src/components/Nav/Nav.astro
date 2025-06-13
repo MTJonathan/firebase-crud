@@ -1,0 +1,30 @@
+---
+import CerrarSesion from "./CerrarSesion";
+const pathname = Astro.url.pathname;
+---
+
+<nav class="flex justify-between pb-4 pt-8 px-8 text-white">
+  <ul class="flex">
+    <li class="font-[900]">BodegaJhoan</li>
+  </ul>
+
+  <ul class="flex gap-20 font-bold">
+    <li>
+      <a href="/" class={pathname === "/" ? "text-red-500" : ""}>Inicio</a>
+    </li>
+    <li>
+      <a
+        href="/clientes/clientes"
+        class={pathname === "/clientes/clientes" ? "text-red-500" : ""}
+        >Clientes</a>
+    </li>
+    <li>
+      <a
+        href="/productos/productos"
+        class={pathname === "/productos/productos" ? "text-red-500" : ""}
+        >Productos</a>
+    </li>
+  </ul>
+
+  <CerrarSesion client:only="react" />
+</nav>
