@@ -13,7 +13,6 @@ const ProductForm = ({
   closeDialog,
   setProductos
 }) => {
-  console.log(nombre, precio, stock);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

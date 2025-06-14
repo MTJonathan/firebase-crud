@@ -1,6 +1,23 @@
-import React from 'react'
+import React from "react";
 
-const ProductList = ({productos}) => {
+const ProductList = ({
+  productos,
+  setNombre,
+  setPrecio,
+  setStock,
+  setId,
+  refDialog,
+  setEdit
+}) => {
+
+  const openEditDialog = (producto) => {
+    refDialog.current.showModal();
+    setEdit(true);
+    setNombre(producto.nombre);
+    setPrecio(producto.precio);
+    setStock(producto.stock);
+    setId(producto.id);
+  }
   return (
     <table className="table-auto w-full text-center border-collapse">
       <thead className="bg-gray-200 text-black">
@@ -19,14 +36,14 @@ const ProductList = ({productos}) => {
             <td className="p-2">{producto.stock}</td>
             <td className="flex justify-around p-2">
               <button onClick={() => {}}>Eliminar</button>
-              <button onClick={() => {}}>Editar</button>
+              <button onClick={() => openEditDialog(producto)}>Editar</button>
               <button>Detalles</button>
             </td>
           </tr>
         ))}
       </tbody>
     </table>
-  )
-}
+  );
+};
 
-export default ProductList
+export default ProductList;

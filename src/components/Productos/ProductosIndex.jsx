@@ -51,7 +51,15 @@ const ProductosIndex = () => {
         </button>
       </header>
 
-      <ProductList productos={productos} />
+      <ProductList
+        productos={productos}
+        setId={setId}
+        setNombre={setNombre}
+        setPrecio={setPrecio}
+        setStock={setStock}
+        setEdit={setEdit}
+        refDialog={refAddProduct}
+      />
 
       <ProductAdd
         ref={refAddProduct}
@@ -71,4 +79,3 @@ const ProductosIndex = () => {
 };
 
 export default ProductosIndex;
-
