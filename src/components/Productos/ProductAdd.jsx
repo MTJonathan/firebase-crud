@@ -14,7 +14,8 @@ const ProductAdd = forwardRef(
       setStock,
       id,
       setId,
-      setProductos
+      setProductos,
+      openDialogConfirmed,
     },
     ref
   ) => {
@@ -48,6 +49,7 @@ const ProductAdd = forwardRef(
           edit={edit}
           closeDialog={closeDialog}
           setProductos={setProductos}
+          openDialogConfirmed={openDialogConfirmed}
         />
       </dialog>
     );

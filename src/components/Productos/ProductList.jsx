@@ -1,4 +1,4 @@
-import React from "react";
+import { eliminarCliente } from "@/lib/firebaseService";
 
 const ProductList = ({
   productos,
@@ -7,7 +7,8 @@ const ProductList = ({
   setStock,
   setId,
   refDialog,
-  setEdit
+  setEdit,
+  refDialogDelete
 }) => {
 
   const openEditDialog = (producto) => {
@@ -17,6 +18,13 @@ const ProductList = ({
     setPrecio(producto.precio);
     setStock(producto.stock);
     setId(producto.id);
+  }
+  const openDialogDelete = (producto) => {
+    refDialogDelete.current.showModal();
+    setId(producto.id);
+    setNombre(producto.nombre);
+    setPrecio(producto.precio);
+    setStock(producto.stock);
   }
   return (
     <table className="table-auto w-full text-center border-collapse">
@@ -35,7 +43,7 @@ const ProductList = ({
             <td className="p-2">{producto.precio}</td>
             <td className="p-2">{producto.stock}</td>
             <td className="flex justify-around p-2">
-              <button onClick={() => {}}>Eliminar</button>
+              <button onClick={() => openDialogDelete(producto)}>Eliminar</button>
               <button onClick={() => openEditDialog(producto)}>Editar</button>
               <button>Detalles</button>
             </td>

@@ -1,5 +1,8 @@
 import ProductList from "./ProductList";
 import ProductAdd from "./ProductAdd";
+import ProductConfirmedDelete from "./ProductConfirmedDelete";
+import ProductConfirmed from "./ProductConfirmed";
+import ProductDeleteDialog from "./ProductDeleteDialog";
 import { useState, useEffect, useRef } from "react";
 import { obtenerProductos } from "@/lib/productos";
 
@@ -13,6 +16,9 @@ const ProductosIndex = () => {
   const [stock, setStock] = useState(0);
 
   const refAddProduct = useRef(null);
+  const refConfirmedDelete = useRef(null);
+  const refConfirmed = useRef(null);
+  const refDeleteConfirmed = useRef(null);
 
   const openDialog = () => {
     if (refAddProduct.current) {
@@ -24,6 +30,12 @@ const ProductosIndex = () => {
       refAddProduct.current.showModal();
     }
   };
+
+  const openDialogConfirmed = () => {
+    if (refConfirmed.current) {
+      refConfirmed.current.showModal();
+    }
+  }
 
   const fetchProductos = async () => {
     try {
@@ -59,6 +71,7 @@ const ProductosIndex = () => {
         setStock={setStock}
         setEdit={setEdit}
         refDialog={refAddProduct}
+        refDialogDelete={refConfirmedDelete}
       />
 
       <ProductAdd
@@ -73,6 +86,22 @@ const ProductosIndex = () => {
         id={id}
         setId={setId}
         setProductos={setProductos}
+        openDialogConfirmed={openDialogConfirmed}
+      />
+
+      <ProductConfirmedDelete
+        nombre={nombre}
+        id={id}
+        setProductos={setProductos}
+        ref={refConfirmedDelete}
+        refConfirmed={refDeleteConfirmed}
+      />
+
+      <ProductConfirmed ref={refConfirmed} edit={edit} nombre={nombre} />
+
+      <ProductDeleteDialog
+        ref={refDeleteConfirmed}
+        nombre={nombre}
       />
     </div>
   );

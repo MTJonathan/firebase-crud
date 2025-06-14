@@ -11,7 +11,8 @@ const ProductForm = ({
   id,
   setId,
   closeDialog,
-  setProductos
+  setProductos,
+  openDialogConfirmed,
 }) => {
 
   const handleSubmit = async (e) => {
@@ -33,6 +34,7 @@ const ProductForm = ({
     }
 
     closeDialog();
+    openDialogConfirmed();
   };
 
   return (
