@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import { useEffect } from "react";
 import closeDialogGeneral from "@/lib/closeDialog";
 import ClientForm from "./ClientForm";
 const ClientDialog = forwardRef(

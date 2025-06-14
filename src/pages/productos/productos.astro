@@ -1,0 +1,13 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import IndexPage from "@/components/IndexPage";
+import Nav from "@/components/Nav/Nav.astro";
+import ProductosIndex from "@/components/Productos/ProductosIndex";
+---
+<IndexPage client:only="react" />
+<Layout title={'Productos'}>
+    <main class="bg-[#070030] min-h-screen">
+        <Nav />
+        <ProductosIndex client:only="react"/>
+    </main>
+</Layout>
