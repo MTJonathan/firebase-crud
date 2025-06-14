@@ -8,35 +8,36 @@ const ProductosIndex = () => {
   const [edit, setEdit] = useState(false);
 
   const [id, setId] = useState("");
-  const [producto, setProducto] = useState("");
+  const [nombre, setNombre] = useState("");
   const [precio, setPrecio] = useState(0);
   const [stock, setStock] = useState(0);
 
   const refAddProduct = useRef(null);
-  console.log(edit);
 
   const openDialog = () => {
     if (refAddProduct.current) {
       setEdit(false);
       setId("");
-      setProducto("");
+      setNombre("");
       setPrecio(0);
       setStock(0);
       refAddProduct.current.showModal();
     }
   };
+
   const fetchProductos = async () => {
     try {
       const data = await obtenerProductos();
       setProductos(data);
     } catch (error) {
-      console.error("Error al obtener clientes:", error);
+      console.error("Error al obtener productos:", error);
     }
   };
 
   useEffect(() => {
     fetchProductos();
   }, []);
+
   return (
     <div>
       <header className="m-5">
@@ -51,21 +52,23 @@ const ProductosIndex = () => {
       </header>
 
       <ProductList productos={productos} />
-      
+
       <ProductAdd
         ref={refAddProduct}
         edit={edit}
-        producto={producto}
-        setProducto={setProducto}
+        nombre={nombre}
+        setNombre={setNombre}
         precio={precio}
         setPrecio={setPrecio}
         stock={stock}
         setStock={setStock}
         id={id}
         setId={setId}
+        setProductos={setProductos}
       />
     </div>
   );
 };
 
 export default ProductosIndex;
+

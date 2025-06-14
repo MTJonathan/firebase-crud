@@ -6,18 +6,26 @@ const ProductAdd = forwardRef(
   (
     {
       edit,
-      producto,
-      setProducto,
+      nombre,
+      setNombre,
       precio,
       setPrecio,
       stock,
       setStock,
       id,
       setId,
+      setProductos
     },
     ref
   ) => {
     closeDialogGeneral(ref);
+
+    const closeDialog = () => {
+      if (ref.current) {
+        ref.current.close();
+      }
+    };
+    
     return (
       <dialog
         ref={ref}
@@ -29,14 +37,17 @@ const ProductAdd = forwardRef(
           </h2>
         </header>
         <ProductForm
-          producto={producto}
-          setProducto={setProducto}
+          nombre={nombre}
+          setNombre={setNombre}
           precio={precio}
           setPrecio={setPrecio}
           stock={stock}
           setStock={setStock}
           id={id}
           setId={setId}
+          edit={edit}
+          closeDialog={closeDialog}
+          setProductos={setProductos}
         />
       </dialog>
     );

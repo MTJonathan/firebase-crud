@@ -14,9 +14,9 @@ const ProductList = ({productos}) => {
       <tbody>
         {productos.map((producto) => (
           <tr key={producto.id}>
-            <td className="p-2">{producto.Producto}</td>
-            <td className="p-2">{producto.Precio}</td>
-            <td className="p-2">{producto.Stock}</td>
+            <td className="p-2">{producto.nombre}</td>
+            <td className="p-2">{producto.precio}</td>
+            <td className="p-2">{producto.stock}</td>
             <td className="flex justify-around p-2">
               <button onClick={() => {}}>Eliminar</button>
               <button onClick={() => {}}>Editar</button>

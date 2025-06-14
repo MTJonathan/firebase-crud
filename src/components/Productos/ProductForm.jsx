@@ -1,24 +1,50 @@
-import React from 'react'
+import { agregarProducto, actualizarProducto } from "@/lib/productos";
 
 const ProductForm = ({
-    Producto,
-    setProducto,
-    Precio,
-    setPrecio,
-    Stock,
-    setStock,
-    id,
-    setId,
+  edit,
+  nombre,
+  setNombre,
+  precio,
+  setPrecio,
+  stock,
+  setStock,
+  id,
+  setId,
+  closeDialog,
+  setProductos
 }) => {
+  console.log(nombre, precio, stock);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const nuevoProducto = { nombre, precio, stock };
+
+    if (edit) {
+      await actualizarProducto(id, nuevoProducto);
+      setProductos((prevProductos) =>
+        prevProductos.map((c) => (c.id === id ? { ...c, ...nuevoProducto } : c))
+      );
+    } else {
+      const nuevo = await agregarProducto(nuevoProducto);
+      setProductos((prevProductos) => [
+        ...prevProductos,
+        { id: nuevo.id, ...nuevoProducto },
+      ]);
+    }
+
+    closeDialog();
+  };
+
   return (
-    <form className="flex flex-col gap-4" /*onSubmit={handleSubmit}*/>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <label className="flex gap-3">
-        <span className="flex-1">Producto:</span>
+        <span className="flex-1">Nombre:</span>
         <input
           type="text"
           className="outline-none border-[1.5px] rounded-2xl px-3 py-1"
-        //   value={Nombre}
-        //   onChange={(e) => setNombre(e.target.value)}
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
           required
         />
       </label>
@@ -27,9 +53,11 @@ const ProductForm = ({
         <span className="flex-1">Precio:</span>
         <input
           type="number"
+          step="any"
+          min={0}
           className="outline-none border-[1.5px] rounded-2xl px-3 py-1"
-        //   value={Apellido}
-        //   onChange={(e) => setApellido(e.target.value)}
+          value={precio}
+          onChange={(e) => setPrecio(e.target.value)}
           required
         />
       </label>
@@ -38,9 +66,10 @@ const ProductForm = ({
         <span className="flex-1">Stock:</span>
         <input
           type="number"
+          min={0}
           className="outline-none border-[1.5px] rounded-2xl px-3 py-1"
-        //   value={Telefono}
-        //   onChange={(e) => setTelefono(e.target.value)}
+          value={stock}
+          onChange={(e) => setStock(e.target.value)}
           required
         />
       </label>
@@ -49,7 +78,7 @@ const ProductForm = ({
         Guardar
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default ProductForm
+export default ProductForm;
