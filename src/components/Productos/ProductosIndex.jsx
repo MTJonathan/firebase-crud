@@ -3,8 +3,8 @@ import ProductAdd from "./ProductAdd";
 import ProductConfirmedDelete from "./ProductConfirmedDelete";
 import ProductConfirmed from "./ProductConfirmed";
 import ProductDeleteDialog from "./ProductDeleteDialog";
-import { useState, useEffect, useRef } from "react";
-import { obtenerProductos } from "@/lib/productos";
+import { useState, useRef } from "react";
+import { listarProductos } from "@/lib/listarProductos";
 
 const ProductosIndex = () => {
   const [productos, setProductos] = useState([]);
@@ -37,18 +37,7 @@ const ProductosIndex = () => {
     }
   }
 
-  const fetchProductos = async () => {
-    try {
-      const data = await obtenerProductos();
-      setProductos(data);
-    } catch (error) {
-      console.error("Error al obtener productos:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchProductos();
-  }, []);
+  listarProductos(setProductos);
 
   return (
     <div>
