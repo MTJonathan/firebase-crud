@@ -1,0 +1,37 @@
+---
+export const prerender = false;
+import Layout from "@/layouts/Layout.astro";
+import type { GetStaticPaths } from "astro";
+import { obtenerClientes } from "@/lib/firebaseService";
+import type { Cliente } from "@/lib/typeCliente";
+import Nav from "@/components/Nav/Nav.astro";
+import DetallesIndex from "@/components/Clientes/Detalles/Detalles";
+
+const { id } = Astro.params;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const clientes = await obtenerClientes();
+  return clientes.map((cliente) => ({
+    params: { id: cliente.id },
+  }));
+};
+
+const clientes = (await obtenerClientes()) as any[];
+const cliente: Cliente | undefined = clientes.find((c) => c.id === id);
+---
+
+<script>
+  const url = new URL(window.location.href);
+  if (url.searchParams.get("reload") === "true") {
+    url.searchParams.delete("reload");
+    window.history.replaceState(null, "", url.toString());
+    location.reload();
+  }
+</script>
+
+<Layout title={`Detalles: ${cliente?.Nombre}`}>
+  <main class="bg-[#070030] min-h-screen">
+    <Nav />
+    <DetallesIndex cliente={cliente} client:only="react" />
+  </main>
+</Layout>

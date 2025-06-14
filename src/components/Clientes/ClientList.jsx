@@ -44,7 +44,7 @@ const ClientList = ({
             <td className="flex justify-around p-2">
               <button onClick={() => OpenDialogDelete(cliente)}>Eliminar</button>
               <button onClick={() => openEditDialog(cliente)}>Editar</button>
-              <button>Detalles</button>
+              <button onClick={() => {window.location.href = `/clientes/detalles/${cliente.id}?reload=true`}}>Detalles</button>
             </td>
           </tr>
         ))}
