@@ -6,6 +6,7 @@ import { obtenerClientes } from "@/lib/firebaseService";
 import type { Cliente } from "@/lib/typeCliente";
 import Nav from "@/components/Nav/Nav.astro";
 import DetallesIndex from "@/components/Clientes/Detalles/Detalles";
+import IndexPage from "@/components/IndexPage";
 
 const { id } = Astro.params;
 
@@ -29,6 +30,7 @@ const cliente: Cliente | undefined = clientes.find((c) => c.id === id);
   }
 </script>
 
+<IndexPage/>
 <Layout title={`Detalles: ${cliente?.Nombre}`}>
   <main class="bg-[#070030] min-h-screen">
     <Nav />
