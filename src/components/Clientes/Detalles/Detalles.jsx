@@ -5,6 +5,8 @@ import DetallesDialog from "./DetallesDialog";
 
 const DetallesIndex = ({ cliente }) => {
   const [detalles, setDetalles] = useState([]);
+  const [edit, setEdit] = useState(false);
+
   const [id, setId] = useState("");
   const [clienteId] = useState(cliente?.id || "");
   const [Producto, setProducto] = useState("");
@@ -38,7 +40,21 @@ const DetallesIndex = ({ cliente }) => {
         </button>
       </header>
       <DetallesList detalles={detalles} />
-      <DetallesDialog ref={refDialog} />
+      <DetallesDialog
+        ref={refDialog}
+        ClienteId={clienteId}
+        edit={edit}
+        Producto={Producto}
+        setProducto={setProducto}
+        Precio={Precio}
+        setPrecio={setPrecio}
+        Cantidad={Cantidad}
+        setCantidad={setCantidad}
+        Total={Total}
+        setTotal={setTotal}
+        setDetalles={setDetalles}
+        id={id}
+      />
     </div>
   );
 };
