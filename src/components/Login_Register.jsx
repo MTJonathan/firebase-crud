@@ -49,7 +49,7 @@ const Login_Register = ({ title }) => {
         {/* Banner Img*/}
         <picture className="hidden md:flex justify-center">
           <img
-            src="../../public/img/banner.webp"
+            src="/img/banner.webp"
             className="w-full rounded-4xl"
             alt=""
             srcset=""
