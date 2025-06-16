@@ -4,10 +4,12 @@ import DetallesList from "@components/Clientes/Detalles/DetallesList";
 import DetallesDialog from "./DetallesDialog";
 import DetallesConfirmed from "./DetallesConfirmend";
 import DetallesConfirmedDelete from "./DetallesConfirmedDelete";
+import DetallesDelete from "./DetallesDelete";
 
 const DetallesIndex = ({ cliente }) => {
   const [detalles, setDetalles] = useState([]);
   const [edit, setEdit] = useState(false);
+  const [totalPagar, setTotalPagar] = useState(0);
 
   const [id, setId] = useState("");
   const [clienteId] = useState(cliente?.id || "");
@@ -21,7 +23,7 @@ const DetallesIndex = ({ cliente }) => {
   const refConfirmedDelete = useRef(null);
   const refDeleteConfirmed = useRef(null);
 
-  listarDetalles(cliente, setDetalles, setTotal);
+  listarDetalles(cliente, setDetalles, setTotal, setTotalPagar, detalles);
 
   const openDialog = () => {
     refDialog.current.showModal();
@@ -37,11 +39,11 @@ const DetallesIndex = ({ cliente }) => {
     if (refDialogConfirmed.current) {
       refDialogConfirmed.current.showModal();
     }
-  }
+  };
 
   return (
     <div>
-      <header className="m-5">
+      <header className="flex m-5 items-center">
         <h1 className="text-2xl font-[900]">Deuda : {cliente.Nombre}</h1>
         <button
           onClick={openDialog}
@@ -51,6 +53,10 @@ const DetallesIndex = ({ cliente }) => {
           Agregar Deuda
         </button>
       </header>
+      <p className="font-bold m-5 text-2xl">
+          <span className="font-[900]">Total a pagar : </span>{" "}
+          S/. {totalPagar}
+        </p>
       <DetallesList
         detalles={detalles}
         refEditDialog={refDialog}
@@ -91,6 +97,8 @@ const DetallesIndex = ({ cliente }) => {
         setDetalles={setDetalles}
         refConfirmed={refDeleteConfirmed}
       />
+
+      <DetallesDelete ref={refDeleteConfirmed} Producto={Producto} />
     </div>
   );
 };

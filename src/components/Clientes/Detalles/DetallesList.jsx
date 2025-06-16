@@ -32,7 +32,6 @@ const DetallesList = ({
     <table className="table-auto w-full text-center border-collapse">
       <thead className="bg-gray-200 text-black">
         <tr>
-          <th>id</th>
           <th className="p-2">Producto</th>
           <th className="p-2">Precio</th>
           <th className="p-2">Cantidad</th>
@@ -43,7 +42,6 @@ const DetallesList = ({
       <tbody>
         {detalles.map((detalle) => (
           <tr key={detalle.id}>
-            <td className="p-2">{detalle.id}</td>
             <td className="p-2">{detalle.Producto}</td>
             <td className="p-2">{detalle.Precio}</td>
             <td className="p-2">{detalle.Cantidad}</td>

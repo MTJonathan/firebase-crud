@@ -81,6 +81,7 @@ const DetalleForm = ({
           name="Producto"
           value={productosBuscado.find((p) => p.nombre === Producto)?.id || ""}
           onChange={(e) => handleProductoChange(e)}
+          required
           className="outline-none border-[1.5px] rounded-2xl px-3 py-1 w-full"
         >
           <option value="" disabled>

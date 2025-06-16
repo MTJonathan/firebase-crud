@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { obtenerDetallesClientes } from "@/lib/detalles";
-export const listarDetalles = (cliente, setDetalles, setTotal) => {
+export const listarDetalles = (cliente, setDetalles, setTotal, setTotalPagar, detalles) => {
   const fetchDetalles = async () => {
     try {
       const data = await obtenerDetallesClientes();
@@ -28,4 +28,12 @@ export const listarDetalles = (cliente, setDetalles, setTotal) => {
   useEffect(() => {
     fetchDetalles();
   }, []);
+
+  useEffect(() => {
+    const suma = detalles.reduce(
+      (acc, detalle) => acc + (detalle.Total || 0),
+      0
+    );
+    setTotalPagar(suma);
+  }, [detalles]);
 };
