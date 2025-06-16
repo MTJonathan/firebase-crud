@@ -4,7 +4,6 @@ import {
   actualizarDetalleCliente,
   agregarDetalleCliente,
 } from "@/lib/detalles";
-import { convertToObject } from "typescript";
 
 const DetalleForm = ({
   Producto,
@@ -36,7 +35,7 @@ const DetalleForm = ({
       await actualizarDetalleCliente(id, detalles);
       setDetalles((prevDetalles) =>
         prevDetalles.map((d) =>
-          d.id === detalles.id ? { ...d, ...detalles } : d
+          d.id === id ? { ...d, ...detalles } : d
         )
       );
     } else {
@@ -63,8 +62,6 @@ const DetalleForm = ({
     } else {
       setPrecio(0);
     }
-
-    console.log(Producto);
   };
 
   // Actualizar el total automáticamente si precio o cantidad cambian
@@ -80,7 +77,7 @@ const DetalleForm = ({
         <span className="flex-1">Producto:</span>
         <select
           name="Producto"
-          value={Producto}
+          value={productosBuscado.find((p) => p.nombre === Producto)?.id || ""}
           onChange={(e) => handleProductoChange(e)}
           className="outline-none border-[1.5px] rounded-2xl px-3 py-1 w-full"
         >

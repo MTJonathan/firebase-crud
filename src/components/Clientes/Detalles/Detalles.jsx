@@ -20,6 +20,7 @@ const DetallesIndex = ({ cliente }) => {
 
   const openDialog = () => {
     refDialog.current.showModal();
+    setEdit(false);
     setId("");
     setProducto("");
     setPrecio(0);
@@ -39,7 +40,16 @@ const DetallesIndex = ({ cliente }) => {
           Agregar Deuda
         </button>
       </header>
-      <DetallesList detalles={detalles} />
+      <DetallesList
+        detalles={detalles}
+        refEditDialog={refDialog}
+        setEdit={setEdit}
+        setId={setId}
+        setProducto={setProducto}
+        setPrecio={setPrecio}
+        setCantidad={setCantidad}
+        setTotal={setTotal}
+      />
       <DetallesDialog
         ref={refDialog}
         ClienteId={clienteId}
