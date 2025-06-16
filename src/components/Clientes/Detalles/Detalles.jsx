@@ -17,6 +17,11 @@ const DetallesIndex = ({ cliente }) => {
   const [Precio, setPrecio] = useState(0);
   const [Cantidad, setCantidad] = useState(0);
   const [Total, setTotal] = useState(0);
+  const [Fecha, setFecha] = useState(() => {
+    const hoy = new Date().toISOString().split("T")[0];
+    return hoy;
+  });
+  console.log(Fecha);
 
   const refDialog = useRef(null);
   const refDialogConfirmed = useRef(null);
@@ -43,7 +48,7 @@ const DetallesIndex = ({ cliente }) => {
 
   return (
     <div>
-      <header className="flex flex-wrap m-5 items-center">
+      <header className="m-5 items-center">
         <h1 className="text-2xl font-[900]">Deuda : {cliente.Nombre}</h1>
         <button
           onClick={openDialog}
@@ -66,6 +71,7 @@ const DetallesIndex = ({ cliente }) => {
         setCantidad={setCantidad}
         setTotal={setTotal}
         refDeleteDialog={refConfirmedDelete}
+        setFecha={setFecha}
       />
       <DetallesDialog
         ref={refDialog}
@@ -82,6 +88,8 @@ const DetallesIndex = ({ cliente }) => {
         setDetalles={setDetalles}
         id={id}
         openDialogConfirmed={openDialogConfirmed}
+        Fecha={Fecha}
+        setFecha={setFecha}
       />
       <DetallesConfirmed
         ref={refDialogConfirmed}

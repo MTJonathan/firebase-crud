@@ -18,6 +18,8 @@ const DetallesDialog = forwardRef(
       setDetalles,
       id,
       openDialogConfirmed,
+      Fecha,
+      setFecha,
     },
     ref
   ) => {
@@ -36,7 +38,7 @@ const DetallesDialog = forwardRef(
       >
         <header className="mb-5">
           <h2 className="text-2xl font-[900] text-center">
-            {edit ? "Editar Cliente" : "Agregar Cliente"}
+            {edit ? "Editar Deuda" : "Agregar Deuda"}
           </h2>
         </header>
         <DetalleForm
@@ -54,6 +56,8 @@ const DetallesDialog = forwardRef(
           id={id}
           closeDialog={closeDialog}
           openDialogConfirmed={openDialogConfirmed}
+          Fecha={Fecha}
+          setFecha={setFecha}
         />
       </dialog>
     );

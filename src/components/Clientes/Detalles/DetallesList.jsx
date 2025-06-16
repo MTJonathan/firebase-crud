@@ -10,29 +10,40 @@ const DetallesList = ({
   setPrecio,
   setCantidad,
   setTotal,
+  setFecha,
 }) => {
   const openDialogEdit = (detalle) => {
     refEditDialog.current.showModal();
     setEdit(true);
     setId(detalle.id);
     setProducto(detalle.Producto);
+    setFecha(detalle.Fecha);
     setPrecio(detalle.Precio);
     setCantidad(detalle.Cantidad);
     setTotal(detalle.Total);
   };
+
   const openDialogDelete = (detalle) => {
     refDeleteDialog.current.showModal();
     setId(detalle.id);
     setProducto(detalle.Producto);
+    setFecha(detalle.Fecha);
     setPrecio(detalle.Precio);
     setCantidad(detalle.Cantidad);
     setTotal(detalle.Total);
   };
+
+  const formatearFecha = (fechaISO) => {
+  if (!fechaISO) return "";
+  const [año, mes, día] = fechaISO.split("-");
+  return `${día}/${mes}/${año}`;
+};
   return (
     <table className="table-auto w-full text-center border-collapse">
       <thead className="bg-gray-200 text-black">
         <tr className="hidden md:table-row">
           <th className="p-2">Producto</th>
+          <th className="p-2">Fecha</th>
           <th className="p-2">Precio</th>
           <th className="p-2">Cantidad</th>
           <th className="p-2">Total</th>
@@ -48,6 +59,10 @@ const DetallesList = ({
             <td className="p-2">
               <span className="md:hidden font-bold">Producto : </span>{" "}
               {detalle.Producto}
+            </td>
+            <td className="p-2">
+              <span className="md:hidden font-bold">Fecha : </span>
+              {formatearFecha(detalle.Fecha)}
             </td>
             <td className="p-2">
               <span className="md:hidden font-bold">Precio : </span>
