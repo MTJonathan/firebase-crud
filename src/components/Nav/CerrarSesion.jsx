@@ -11,7 +11,7 @@ const CerrarSesion = () => {
     }
   };
   return (
-    <ul className="font-bold cursor-pointer" onClick={handleLogout}>
+    <ul className="font-bold cursor-pointer border rounded-2xl py-2 px-4 active:bg-red-500" onClick={handleLogout}>
       Cerrar sesión
     </ul>
   );

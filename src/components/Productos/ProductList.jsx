@@ -8,9 +8,8 @@ const ProductList = ({
   setId,
   refDialog,
   setEdit,
-  refDialogDelete
+  refDialogDelete,
 }) => {
-
   const openEditDialog = (producto) => {
     refDialog.current.showModal();
     setEdit(true);
@@ -18,18 +17,18 @@ const ProductList = ({
     setPrecio(producto.precio);
     setStock(producto.stock);
     setId(producto.id);
-  }
+  };
   const openDialogDelete = (producto) => {
     refDialogDelete.current.showModal();
     setId(producto.id);
     setNombre(producto.nombre);
     setPrecio(producto.precio);
     setStock(producto.stock);
-  }
+  };
   return (
     <table className="table-auto w-full text-center border-collapse">
       <thead className="bg-gray-200 text-black">
-        <tr>
+        <tr className="hidden md:table-row">
           <th className="p-2">Producto</th>
           <th className="p-2">Precio</th>
           <th className="p-2">Stock</th>
@@ -38,12 +37,26 @@ const ProductList = ({
       </thead>
       <tbody>
         {productos.map((producto) => (
-          <tr key={producto.id}>
-            <td className="p-2">{producto.nombre}</td>
-            <td className="p-2">{producto.precio}</td>
-            <td className="p-2">{producto.stock}</td>
+          <tr
+            key={producto.id}
+            className="flex flex-col border m-5 rounded-2xl md:rounded-none md:m-0 border-gray-300 md:table-row"
+          >
+            <td className="p-2">
+              <span className="md:hidden font-bold">Producto : </span>
+              {producto.nombre}
+            </td>
+            <td className="p-2">
+              <span className="md:hidden font-bold">Precio : </span>
+              S/. {producto.precio}
+            </td>
+            <td className="p-2">
+              <span className="md:hidden font-bold">Stock : </span>{" "}
+              {producto.stock}
+            </td>
             <td className="flex justify-around p-2">
-              <button onClick={() => openDialogDelete(producto)}>Eliminar</button>
+              <button onClick={() => openDialogDelete(producto)}>
+                Eliminar
+              </button>
               <button onClick={() => openEditDialog(producto)}>Editar</button>
               <button>Detalles</button>
             </td>

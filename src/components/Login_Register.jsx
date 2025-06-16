@@ -44,10 +44,10 @@ const Login_Register = ({ title }) => {
   };
 
   return (
-    <main className="bg-[#686279] p-18 w-screen h-screen">
-      <div className="grid grid-cols-2 gap-10 bg-[#2c2638] p-25 rounded-4xl">
+    <main className="bg-[#686279] py-18 md:p-18 w-screen min-h-screen">
+      <div className="grid md:grid-cols-2 md:gap-10 bg-[#2c2638] md:p-25 rounded-4xl">
         {/* Banner Img*/}
-        <picture className="flex justify-center">
+        <picture className="hidden md:flex justify-center">
           <img
             src="../../public/img/banner.webp"
             className="w-full rounded-4xl"
@@ -57,7 +57,7 @@ const Login_Register = ({ title }) => {
         </picture>
 
         {/* Formulario */}
-        <form onSubmit={handleSubmit} className="flex flex-col gap-8 px-5">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-8 p-5 sm:p-10 md:px-5">
           <h1 className="text-3xl text-center font-[900] text-white">
             {title}
           </h1>
@@ -84,7 +84,7 @@ const Login_Register = ({ title }) => {
           <p className="text-red-500 text-center text-sm">
             {error}
           </p> 
-          <div className="flex justify-center px-5 gap-20">
+          <div className="flex flex-wrap gap-5 justify-center md:px-5 lg:gap-20">
             <button
               className="bg-[#6d54b5] py-3 px-6 rounded-4xl cursor-pointer text-white justify-self-center"
               type="submit"

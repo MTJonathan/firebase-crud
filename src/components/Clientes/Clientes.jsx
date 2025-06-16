@@ -68,7 +68,7 @@ const ClientesIndex = () => {
       <button
         onClick={openDialog}
         id="client-button"
-        className="cursor-pointer m-5 p-3 font-bold border rounded-2xl"
+        className="cursor-pointer my-5 md:m-5 p-3 font-bold border rounded-2xl active:bg-red-500"
       >
         Agregar Cliente
       </button>

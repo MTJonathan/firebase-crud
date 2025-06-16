@@ -3,12 +3,12 @@ import CerrarSesion from "./CerrarSesion";
 const pathname = Astro.url.pathname;
 ---
 
-<nav class="flex justify-between pb-4 pt-8 px-8 text-white">
-  <ul class="flex">
+<nav class="flex flex-wrap gap-5 md:gap-0 justify-center items-center md:justify-between pb-4 pt-8 px-8 text-white">
+  <ul class="hidden md:flex">
     <li class="font-[900]">BodegaJhoan</li>
   </ul>
 
-  <ul class="flex gap-20 font-bold">
+  <ul class="flex gap-5 md:gap-20 font-bold">
     <li>
       <a href="/" class={pathname === "/" ? "text-red-500" : ""}>Inicio</a>
     </li>

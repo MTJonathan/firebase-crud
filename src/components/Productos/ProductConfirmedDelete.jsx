@@ -44,7 +44,7 @@ const ProductConfirmedDelete = forwardRef(
           </span>
         </p>
 
-        <div className="flex justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-4">
           <button
             onClick={() => handleDelete(id)}
             className="border-2 border-gray-400 bg-[#06002b] text-white rounded-2xl py-2 px-10"

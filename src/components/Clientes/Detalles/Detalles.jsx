@@ -43,20 +43,19 @@ const DetallesIndex = ({ cliente }) => {
 
   return (
     <div>
-      <header className="flex m-5 items-center">
+      <header className="flex flex-wrap m-5 items-center">
         <h1 className="text-2xl font-[900]">Deuda : {cliente.Nombre}</h1>
         <button
           onClick={openDialog}
           id="client-button"
-          className="cursor-pointer m-5 p-3 font-bold border rounded-2xl"
+          className="cursor-pointer my-5 md:m-5 p-3 font-bold border rounded-2xl active:bg-red-500"
         >
           Agregar Deuda
         </button>
       </header>
       <p className="font-bold m-5 text-2xl">
-          <span className="font-[900]">Total a pagar : </span>{" "}
-          S/. {totalPagar}
-        </p>
+        <span className="font-[900]">Total a pagar : </span> S/. {totalPagar}
+      </p>
       <DetallesList
         detalles={detalles}
         refEditDialog={refDialog}

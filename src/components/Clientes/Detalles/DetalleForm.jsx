@@ -75,14 +75,14 @@ const DetalleForm = ({
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-      <label className="flex gap-3">
+      <label className="flex flex-wrap gap-3 justify-center text-center">
         <span className="flex-1">Producto:</span>
         <select
           name="Producto"
           value={productosBuscado.find((p) => p.nombre === Producto)?.id || ""}
           onChange={(e) => handleProductoChange(e)}
           required
-          className="outline-none border-[1.5px] rounded-2xl px-3 py-1 w-full"
+          className="outline-none border-[1.5px] rounded-2xl px-3 py-1"
         >
           <option value="" disabled>
             Seleccione un producto
@@ -99,7 +99,7 @@ const DetalleForm = ({
         </select>
       </label>
 
-      <label className="flex gap-3">
+      <label className="flex flex-wrap text-center justify-center gap-3">
         <span className="flex-1">Precio:</span>
         <input
           type="number"
@@ -112,7 +112,7 @@ const DetalleForm = ({
         />
       </label>
 
-      <label className="flex gap-3">
+      <label className="flex flex-wrap gap-3 justify-center text-center">
         <span className="flex-1">Cantidad:</span>
         <input
           type="number"
@@ -124,7 +124,7 @@ const DetalleForm = ({
         />
       </label>
 
-      <label className="flex gap-3">
+      <label className="flex flex-wrap gap-3 justify-center text-center">
         <span className="flex-1">Total:</span>
         <input
           type="number"

@@ -39,7 +39,7 @@ const ProductForm = ({
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-      <label className="flex gap-3">
+      <label className="flex flex-wrap gap-3 justify-center text-center">
         <span className="flex-1">Nombre:</span>
         <input
           type="text"
@@ -50,7 +50,7 @@ const ProductForm = ({
         />
       </label>
 
-      <label className="flex gap-3">
+      <label className="flex flex-wrap gap-3 justify-center text-center">
         <span className="flex-1">Precio:</span>
         <input
           type="number"
@@ -63,7 +63,7 @@ const ProductForm = ({
         />
       </label>
 
-      <label className="flex gap-3">
+      <label className="flex flex-wrap gap-3 justify-center text-center">
         <span className="flex-1">Stock:</span>
         <input
           type="number"
