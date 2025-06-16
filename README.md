@@ -1,48 +1,55 @@
-# Astro Starter Kit: Basics
+# 🛒 Bodega Firebase
 
-```sh
-npm create astro@latest -- --template basics
-```
+Este proyecto es una aplicación web desarrollada para gestionar los productos y ventas de una **bodega real** de forma práctica, rápida y accesible desde cualquier dispositivo. Está pensada para ayudar a llevar un mejor control de los productos vendidos y los ingresos diarios, de forma digital.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🌐 App en producción
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+👉 Visita la app en: [https://jhoanbodega.netlify.app](https://jhoanbodega.netlify.app)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## 🚀 Tecnologías utilizadas
 
-## 🚀 Project Structure
+- ⚡ [Astro](https://astro.build/) — Framework moderno para sitios rápidos y eficientes.
+- ⚛️ React — Para los componentes interactivos y formularios dinámicos.
+- 🌐 Firebase — Backend en tiempo real para almacenar clientes, productos y detalles de ventas.
+- 💨 Tailwind CSS — Framework de estilos para construir una interfaz atractiva y responsive.
+- ☁️ Netlify — Plataforma de despliegue continuo y hosting del sitio web.
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🧩 Funcionalidades principales
 
-```text
+- ✅ Registro de **clientes** (nombre, apellido, teléfono).
+- ✅ Gestión de **productos** (nombre y precio).
+- ✅ Agregar **detalles de venta** asociados a un cliente (producto, precio, cantidad, total, fecha).
+- ✅ Edición y eliminación de ventas y clientes.
+- ✅ Cálculo automático del **total** por venta.
+- ✅ Visualización de los registros en **tablas adaptadas** para escritorio y móviles.
+- ✅ Almacenamiento persistente de datos en la nube mediante Firebase.
+
+## 📸 Capturas del sistema
+
+### 🏠 Página principal
+![Home](./public/img/home.png)
+
+### 👥 Gestión de clientes
+![Clientes](./public/img/clientes.png)
+
+### 📦 Gestión de productos
+![Productos](./public/img/productos.png)
+
+### 📋 Detalles de venta
+![Detalles](./public/img/detalles.png)
+
+
+## 📂 Estructura del proyecto
+
+```bash
 /
-├── public/
-│   └── favicon.svg
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+│   ├── components/          # Componentes React y Astro
+│   ├── lib/                 # Funciones para interactuar con Firebase
+│   ├── pages/               # Rutas principales del sitio
+│   └── layouts/             # Plantillas base
+├── public/                  # Archivos estáticos (imágenes)
+├── astro.config.mjs         # Configuración de Astro
+├── tailwind.config.js       # Configuración de Tailwind
+├── firebase.js              # Conexión a Firebase
+└── package.json             # Dependencias y scripts del proyecto
