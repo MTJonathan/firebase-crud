@@ -19,6 +19,7 @@ const DetalleForm = ({
   id,
   edit,
   closeDialog,
+  openDialogConfirmed,
 }) => {
   const [productosBuscado, setProductosBuscado] = useState([]);
 
@@ -39,13 +40,14 @@ const DetalleForm = ({
         )
       );
     } else {
-      await agregarDetalleCliente(detalles);
+      const nuevo = await agregarDetalleCliente(detalles);
       setDetalles((prevDetalles) => [
         ...prevDetalles,
-        { id: Date.now(), ...detalles }, // Simulando un ID único
+        { id: nuevo.id, ...detalles }, // Simulando un ID único
       ]);
     }
     closeDialog();
+    openDialogConfirmed();
   };
 
   const handleProductoChange = (e) => {

@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import { listarDetalles } from "@/lib/listarDetalles";
 import DetallesList from "@components/Clientes/Detalles/DetallesList";
 import DetallesDialog from "./DetallesDialog";
+import DetallesConfirmed from "./DetallesConfirmend";
+import DetallesConfirmedDelete from "./DetallesConfirmedDelete";
 
 const DetallesIndex = ({ cliente }) => {
   const [detalles, setDetalles] = useState([]);
@@ -15,6 +17,9 @@ const DetallesIndex = ({ cliente }) => {
   const [Total, setTotal] = useState(0);
 
   const refDialog = useRef(null);
+  const refDialogConfirmed = useRef(null);
+  const refConfirmedDelete = useRef(null);
+  const refDeleteConfirmed = useRef(null);
 
   listarDetalles(cliente, setDetalles, setTotal);
 
@@ -27,6 +32,12 @@ const DetallesIndex = ({ cliente }) => {
     setCantidad(0);
     setTotal(0);
   };
+
+  const openDialogConfirmed = () => {
+    if (refDialogConfirmed.current) {
+      refDialogConfirmed.current.showModal();
+    }
+  }
 
   return (
     <div>
@@ -49,6 +60,7 @@ const DetallesIndex = ({ cliente }) => {
         setPrecio={setPrecio}
         setCantidad={setCantidad}
         setTotal={setTotal}
+        refDeleteDialog={refConfirmedDelete}
       />
       <DetallesDialog
         ref={refDialog}
@@ -64,6 +76,20 @@ const DetallesIndex = ({ cliente }) => {
         setTotal={setTotal}
         setDetalles={setDetalles}
         id={id}
+        openDialogConfirmed={openDialogConfirmed}
+      />
+      <DetallesConfirmed
+        ref={refDialogConfirmed}
+        edit={edit}
+        Producto={Producto}
+      />
+
+      <DetallesConfirmedDelete
+        ref={refConfirmedDelete}
+        Producto={Producto}
+        id={id}
+        setDetalles={setDetalles}
+        refConfirmed={refDeleteConfirmed}
       />
     </div>
   );

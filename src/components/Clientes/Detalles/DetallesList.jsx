@@ -1,10 +1,27 @@
 import React from "react";
 
-const DetallesList = ({ detalles, refEditDialog, setEdit, setId, setProducto, setPrecio, setCantidad, setTotal }) => {
-
+const DetallesList = ({
+  detalles,
+  refEditDialog,
+  refDeleteDialog,
+  setEdit,
+  setId,
+  setProducto,
+  setPrecio,
+  setCantidad,
+  setTotal,
+}) => {
   const openDialogEdit = (detalle) => {
     refEditDialog.current.showModal();
     setEdit(true);
+    setId(detalle.id);
+    setProducto(detalle.Producto);
+    setPrecio(detalle.Precio);
+    setCantidad(detalle.Cantidad);
+    setTotal(detalle.Total);
+  };
+  const openDialogDelete = (detalle) => {
+    refDeleteDialog.current.showModal();
     setId(detalle.id);
     setProducto(detalle.Producto);
     setPrecio(detalle.Precio);
@@ -32,7 +49,7 @@ const DetallesList = ({ detalles, refEditDialog, setEdit, setId, setProducto, se
             <td className="p-2">{detalle.Cantidad}</td>
             <td className="p-2">{detalle.Total}</td>
             <td className="flex justify-around p-2">
-              <button onClick={() => {}}>Eliminar</button>
+              <button onClick={() => openDialogDelete(detalle)}>Eliminar</button>
               <button onClick={() => openDialogEdit(detalle)}>Editar</button>
             </td>
           </tr>

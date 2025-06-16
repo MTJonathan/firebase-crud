@@ -17,6 +17,7 @@ const DetallesDialog = forwardRef(
       ClienteId,
       setDetalles,
       id,
+      openDialogConfirmed,
     },
     ref
   ) => {
@@ -52,6 +53,7 @@ const DetallesDialog = forwardRef(
           edit={edit}
           id={id}
           closeDialog={closeDialog}
+          openDialogConfirmed={openDialogConfirmed}
         />
       </dialog>
     );
